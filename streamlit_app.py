@@ -24,9 +24,16 @@ def password_entered():
 if not check_password():
     st.stop()  # Zatrzymaj aplikację tutaj
 
-# --- KONFIGURACJA ---
-st.set_page_config(page_title="Innowacyjny Dom - Dobór Pompy Ciepła", layout="centered")
+# --- KONFIGURACJA STRONY ---
+st.set_page_config(page_title="Innowacyjny Dom - Kalkulator", layout="centered")
 
+# --- DODANY FRAGMENT Z LOGO ---
+left_co, cent_co, last_co = st.columns([1, 2, 1])
+with cent_co:
+    st.image("logo.png", use_container_width=True)
+
+# --- TYTUŁ APLIKACJI ---
+st.title("Dobór Pompy Ciepła")
 # --- PEŁNA BAZA DANYCH (Zintegrowana ze wszystkich arkuszy) ---
 DANE_POMP = {
     "ACOND": {
@@ -152,4 +159,5 @@ try:
 
 except Exception as e:
     st.error("Wybrany model nie posiada danych charakterystyki dla zadanej temperatury zasilania.")
+
 
